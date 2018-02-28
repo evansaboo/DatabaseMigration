@@ -1,0 +1,9 @@
+The program migrates the data from the old database name "recruitment_db_old" to a temporary migration database called "recruitment_db_migrate".
+
+The program drops and created the needed tables and adds all neccessary data that is needed for the migration to be successfull.
+
+The first part of the program is a manual translation of all competences in the current database and after that the migration is automated. There are two initial languages added to the new database, which are swedish and english. 
+
+There old database needs to be manually seeded with the data from the old_db script which can also be used to create the db. 
+
+There is a script for the creation of the new database called "new_db" which can be used to create the database and set ut some initial data so that the database can be used without migration.
