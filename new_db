@@ -1,1 +1,70 @@
+CREATE TABLE role (
+role_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+name VARCHAR(255) UNIQUE NOT NULL
+);
 
+CREATE TABLE supported_language (
+supported_language_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+locale VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE status_name (
+status_name_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+status_id BIGINT NOT NULL,
+name VARCHAR(255) NOT NULL,
+supported_language BIGINT NOT NULL REFERENCES supported_language,
+UNIQUE (status_id, name, supported_language)
+);
+
+CREATE TABLE person (
+person_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+name VARCHAR(255) NOT NULL,
+surname VARCHAR(255) NOT NULL,
+ssn VARCHAR(255) UNIQUE NOT NULL,
+email VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+role_id BIGINT NOT NULL REFERENCES role,
+username VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE applications (
+application_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+person_id BIGINT NOT NULL REFERENCES person,
+registration_date DATE NOT NULL,
+status_name BIGINT NOT NULL REFERENCES status_name
+);
+
+CREATE TABLE availability (
+availability_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+person_id BIGINT NOT NULL REFERENCES person,
+from_date DATE NOT NULL,
+to_date DATE NOT NULL
+);
+
+CREATE TABLE competence_name (
+competence_name_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+competence_id BIGINT NOT NULL,
+name VARCHAR(255) NOT NULL,
+supported_language BIGINT NOT NULL REFERENCES supported_language,
+UNIQUE (competence_id, name, supported_language)
+);
+
+CREATE TABLE competence_profile (
+competence_profile_id BIGINT PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+person_id BIGINT NOT NULL REFERENCES person,
+competence_id BIGINT NOT NULL REFERENCES competence_name,
+years_of_experience NUMERIC(4,2) NOT NULL
+);
+
+insert into ROOT.SUPPORTED_LANGUAGE (locale) values ('sv');
+insert into ROOT.SUPPORTED_LANGUAGE (locale) values ('en');
+
+insert into ROOT."ROLE" (name) values ('Applicant');
+insert into ROOT."ROLE" (name) values ('Recruiter');
+
+insert into ROOT.STATUS_NAME (status_id, name, supported_language) values (1, 'Accepterad', 1);
+insert into ROOT.STATUS_NAME (status_id, name, supported_language) values (1, 'Accepted', 2);
+insert into ROOT.STATUS_NAME (status_id, name, supported_language) values (2, 'Nekad', 1);
+insert into ROOT.STATUS_NAME (status_id, name, supported_language) values (2, 'Rejected', 2);
+insert into ROOT.STATUS_NAME (status_id, name, supported_language) values (3, 'Väntar', 1);
+insert into ROOT.STATUS_NAME (status_id, name, supported_language) values (3, 'Pending', 2);
