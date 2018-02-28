@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="OldRecPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>model_oldDB.Availability</class>
+    <class>model_oldDB.Competence</class>
+    <class>model_oldDB.CompetenceProfile</class>
+    <class>model_oldDB.Person</class>
+    <class>model_oldDB.Role</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/recruitment_db_old"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="eclipselink.canonicalmodel.subpackage" value="oldRec"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="NewRecPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>model_newDB.Applications</class>
+    <class>model_newDB.Availability</class>
+    <class>model_newDB.CompetenceName</class>
+    <class>model_newDB.CompetenceProfile</class>
+    <class>model_newDB.Person</class>
+    <class>model_newDB.Role</class>
+    <class>model_newDB.StatusName</class>
+    <class>model_newDB.SupportedLanguage</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/recruitment_db_migrate"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="eclipselink.canonicalmodel.subpackage" value="newRec"/>
+    </properties>
+  </persistence-unit>
+</persistence>
