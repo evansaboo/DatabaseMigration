@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Reprents the status_name table in the new database where each row represents 
+ * a status in a specific language.
  *
  * @author Oscar
  */
@@ -57,13 +59,31 @@ public class StatusName implements Serializable {
     @ManyToOne(optional = false)
     private SupportedLanguage supportedLanguage;
 
+    /**
+     * Creates a new status name without setting any variable.
+     *
+     */
     public StatusName() {
     }
 
+    /**
+     * Creates a new status name with a specific id.
+     *
+     * @param statusNameId the new id.
+     */
     public StatusName(Long statusNameId) {
         this.statusNameId = statusNameId;
     }
 
+    /**
+     * Creates a new status name with a specific id and a status id with is same 
+     * for this type of status in all languages and a name in this this specific 
+     * language.
+     *
+     * @param statusNameId the new id.
+     * @param statusId the id for this type of status.
+     * @param name the name of the status in a specifc language.
+     */
     public StatusName(Long statusNameId, long statusId, String name) {
         this.statusNameId = statusNameId;
         this.statusId = statusId;
@@ -109,31 +129,6 @@ public class StatusName implements Serializable {
 
     public void setSupportedLanguage(SupportedLanguage supportedLanguage) {
         this.supportedLanguage = supportedLanguage;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (statusNameId != null ? statusNameId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof StatusName)) {
-            return false;
-        }
-        StatusName other = (StatusName) object;
-        if ((this.statusNameId == null && other.statusNameId != null) || (this.statusNameId != null && !this.statusNameId.equals(other.statusNameId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.StatusName[ statusNameId=" + statusNameId + " ]";
     }
     
 }

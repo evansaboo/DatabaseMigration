@@ -11,6 +11,11 @@ package model;
  */
 public class ExceptionThrower {
     
+    /**
+     *
+     * @param msg
+     * @throws Exception
+     */
     public void throwException(String msg) throws Exception {
         throw new Exception(msg);
     }

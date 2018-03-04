@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Reprents the competence_name table in the new database where each row represents
+ * a competence in a specific language.
  *
  * @author Oscar
  */
@@ -57,13 +59,30 @@ public class CompetenceName implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "competenceId")
     private List<CompetenceProfile> competenceProfileList;
 
+    /**
+     * Creates a new competence name without setting any varaible.
+     *
+     */
     public CompetenceName() {
     }
 
+    /**
+     * Creates a new competence name with a specific id.
+     *
+     * @param competenceNameId the new id.
+     */
     public CompetenceName(Long competenceNameId) {
         this.competenceNameId = competenceNameId;
     }
 
+    /**
+     * Creates a new competence name with a specific id, the competence name id 
+     * which is the same for this competence no matter language and a name.
+     *
+     * @param competenceNameId the new id.
+     * @param competenceId the new id that is same for all languages.
+     * @param name the name in this specific language.
+     */
     public CompetenceName(Long competenceNameId, long competenceId, String name) {
         this.competenceNameId = competenceNameId;
         this.competenceId = competenceId;
@@ -109,31 +128,6 @@ public class CompetenceName implements Serializable {
 
     public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileList) {
         this.competenceProfileList = competenceProfileList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (competenceNameId != null ? competenceNameId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CompetenceName)) {
-            return false;
-        }
-        CompetenceName other = (CompetenceName) object;
-        if ((this.competenceNameId == null && other.competenceNameId != null) || (this.competenceNameId != null && !this.competenceNameId.equals(other.competenceNameId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.CompetenceName[ competenceNameId=" + competenceNameId + " ]";
     }
     
 }

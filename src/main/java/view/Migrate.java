@@ -17,12 +17,19 @@ import model_oldDB.Competence;
 
 
 /**
- *
+ * Represents the migration of the old database to the new database. All migration
+ * is done from here and this is the main method in the application. 
+ * 
  * @author Oscar
  */
 public class Migrate {
     private static final Scanner stdIn = new Scanner(System.in).useDelimiter("\\n");
     
+    /**
+     * Main method that runs when program is run.
+     * 
+     * @param args runtime arguments, none expected.
+     */
     public static void main(String[] args) {
         try {
             Controller controller = new Controller();

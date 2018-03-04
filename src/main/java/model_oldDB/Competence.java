@@ -19,6 +19,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Reprents the competence table in the old database where each row represents 
+ * a recognized competence.
  *
  * @author Oscar
  */
@@ -41,9 +43,18 @@ public class Competence implements Serializable {
     @OneToMany(mappedBy = "competenceId")
     private List<CompetenceProfile> competenceProfileList;
 
+    /**
+     * Creates a new competence without setting any variable.
+     *
+     */
     public Competence() {
     }
 
+    /**
+     * Creates a new competence with a specific id.
+     *
+     * @param competenceId the new id.
+     */
     public Competence(Long competenceId) {
         this.competenceId = competenceId;
     }
@@ -72,30 +83,4 @@ public class Competence implements Serializable {
     public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileList) {
         this.competenceProfileList = competenceProfileList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (competenceId != null ? competenceId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Competence)) {
-            return false;
-        }
-        Competence other = (Competence) object;
-        if ((this.competenceId == null && other.competenceId != null) || (this.competenceId != null && !this.competenceId.equals(other.competenceId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_oldDB.Competence[ competenceId=" + competenceId + " ]";
-    }
-    
 }

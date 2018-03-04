@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Reprents the person table in the old database where each row represents a 
+ * user/applicant.
  *
  * @author Oscar
  */
@@ -63,9 +65,18 @@ public class Person implements Serializable {
     @OneToMany(mappedBy = "personId")
     private List<CompetenceProfile> competenceProfileList;
 
+    /**
+     * Creates a new person without setting any variable.
+     * 
+     */
     public Person() {
     }
 
+    /**
+     * Creates a new person and sets the id.
+     *
+     * @param personId new persons id.
+     */
     public Person(Long personId) {
         this.personId = personId;
     }
@@ -150,31 +161,5 @@ public class Person implements Serializable {
 
     public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileList) {
         this.competenceProfileList = competenceProfileList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (personId != null ? personId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Person)) {
-            return false;
-        }
-        Person other = (Person) object;
-        if ((this.personId == null && other.personId != null) || (this.personId != null && !this.personId.equals(other.personId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_oldDB.Person[ personId=" + personId + " ]";
-    }
-    
+    }    
 }

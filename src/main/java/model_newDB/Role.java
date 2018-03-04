@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Reprents the role table in the new database where each row represents a role 
+ * a person can belong to.
  *
  * @author Oscar
  */
@@ -48,13 +50,28 @@ public class Role implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleId")
     private List<Person> personList;
 
+    /**
+     * Creates a new role without setting any variable.
+     *
+     */
     public Role() {
     }
 
+    /**
+     * Creates a new role with a specific id.
+     *
+     * @param roleId the new id.
+     */
     public Role(Long roleId) {
         this.roleId = roleId;
     }
 
+    /**
+     * Creates a new role with a specific id and a name.
+     *
+     * @param roleId the new id.
+     * @param name the name of the role.
+     */
     public Role(Long roleId, String name) {
         this.roleId = roleId;
         this.name = name;
@@ -83,31 +100,6 @@ public class Role implements Serializable {
 
     public void setPersonList(List<Person> personList) {
         this.personList = personList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (roleId != null ? roleId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Role)) {
-            return false;
-        }
-        Role other = (Role) object;
-        if ((this.roleId == null && other.roleId != null) || (this.roleId != null && !this.roleId.equals(other.roleId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.Role[ roleId=" + roleId + " ]";
     }
     
 }

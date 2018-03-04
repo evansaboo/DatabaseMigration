@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Reprents the supported_language table in the new database where each row 
+ * represents a language the database can handle.
  *
  * @author Oscar
  */
@@ -50,13 +52,29 @@ public class SupportedLanguage implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "supportedLanguage")
     private List<StatusName> statusNameList;
 
+    /**
+     * Creates a new supported language without setting any variable.
+     *
+     */
     public SupportedLanguage() {
     }
 
+    /**
+     * Creates a new supported language with a specific id.
+     *
+     * @param supportedLanguageId the new id.
+     */
     public SupportedLanguage(Long supportedLanguageId) {
         this.supportedLanguageId = supportedLanguageId;
     }
 
+    /**
+     * Creates a new supported language with a specific id and the language/locale
+     * this supported lanugage is for.
+     *
+     * @param supportedLanguageId the new id.
+     * @param locale the locale of this supported language.
+     */
     public SupportedLanguage(Long supportedLanguageId, String locale) {
         this.supportedLanguageId = supportedLanguageId;
         this.locale = locale;
@@ -94,31 +112,6 @@ public class SupportedLanguage implements Serializable {
 
     public void setStatusNameList(List<StatusName> statusNameList) {
         this.statusNameList = statusNameList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (supportedLanguageId != null ? supportedLanguageId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SupportedLanguage)) {
-            return false;
-        }
-        SupportedLanguage other = (SupportedLanguage) object;
-        if ((this.supportedLanguageId == null && other.supportedLanguageId != null) || (this.supportedLanguageId != null && !this.supportedLanguageId.equals(other.supportedLanguageId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.SupportedLanguage[ supportedLanguageId=" + supportedLanguageId + " ]";
     }
     
 }

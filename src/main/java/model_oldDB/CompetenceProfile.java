@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Reprents the competence_profile table in the old database where each row represents
+ * a users competence and years of experience in that field.
  *
  * @author Oscar
  */
@@ -46,9 +48,18 @@ public class CompetenceProfile implements Serializable {
     @ManyToOne
     private Person personId;
 
+    /**
+     * Creates a new competence profile without setting any variable.
+     *
+     */
     public CompetenceProfile() {
     }
 
+    /**
+     * Creates a new competence profile with a specific id.
+     *
+     * @param competenceProfileId the new id.
+     */
     public CompetenceProfile(Long competenceProfileId) {
         this.competenceProfileId = competenceProfileId;
     }
@@ -83,31 +94,6 @@ public class CompetenceProfile implements Serializable {
 
     public void setPersonId(Person personId) {
         this.personId = personId;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (competenceProfileId != null ? competenceProfileId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CompetenceProfile)) {
-            return false;
-        }
-        CompetenceProfile other = (CompetenceProfile) object;
-        if ((this.competenceProfileId == null && other.competenceProfileId != null) || (this.competenceProfileId != null && !this.competenceProfileId.equals(other.competenceProfileId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_oldDB.CompetenceProfile[ competenceProfileId=" + competenceProfileId + " ]";
     }
     
 }

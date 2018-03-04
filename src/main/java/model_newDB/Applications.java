@@ -23,6 +23,8 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Reprents the applications table in the new database where each row represents
+ * an application made.
  *
  * @author Oscar
  */
@@ -52,13 +54,28 @@ public class Applications implements Serializable {
     @ManyToOne(optional = false)
     private StatusName statusName;
 
+    /**
+     * Creates a new application without setting any variable.
+     *
+     */
     public Applications() {
     }
 
+    /**
+     * Creates a new application with a specific id.
+     *
+     * @param applicationId the new id.
+     */
     public Applications(Long applicationId) {
         this.applicationId = applicationId;
     }
 
+    /**
+     * Creates a new application with a specific id and a registration date.
+     *
+     * @param applicationId the new id.
+     * @param registrationDate the date the application was registered.
+     */
     public Applications(Long applicationId, Date registrationDate) {
         this.applicationId = applicationId;
         this.registrationDate = registrationDate;
@@ -94,31 +111,6 @@ public class Applications implements Serializable {
 
     public void setStatusName(StatusName statusName) {
         this.statusName = statusName;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (applicationId != null ? applicationId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Applications)) {
-            return false;
-        }
-        Applications other = (Applications) object;
-        if ((this.applicationId == null && other.applicationId != null) || (this.applicationId != null && !this.applicationId.equals(other.applicationId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.Applications[ applicationId=" + applicationId + " ]";
     }
     
 }

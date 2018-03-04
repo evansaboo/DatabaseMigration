@@ -23,6 +23,8 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Reprents the availability table in the new database where each row represnts
+ * a period of time a specific peron is available.
  *
  * @author Oscar
  */
@@ -54,13 +56,30 @@ public class Availability implements Serializable {
     @ManyToOne(optional = false)
     private Person personId;
 
+    /**
+     * Creates a new availability without setting any variable.
+     *
+     */
     public Availability() {
     }
 
+    /**
+     * Creates a new availability with a specific id.
+     * 
+     * @param availabilityId the new id.
+     */
     public Availability(Long availabilityId) {
         this.availabilityId = availabilityId;
     }
 
+    /**
+     * Creates a new availability with a specific id and a from date and to date
+     * for when the users is available.
+     *
+     * @param availabilityId the new id.
+     * @param fromDate available from this date.
+     * @param toDate available to this date.
+     */
     public Availability(Long availabilityId, Date fromDate, Date toDate) {
         this.availabilityId = availabilityId;
         this.fromDate = fromDate;
@@ -97,31 +116,6 @@ public class Availability implements Serializable {
 
     public void setPersonId(Person personId) {
         this.personId = personId;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (availabilityId != null ? availabilityId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Availability)) {
-            return false;
-        }
-        Availability other = (Availability) object;
-        if ((this.availabilityId == null && other.availabilityId != null) || (this.availabilityId != null && !this.availabilityId.equals(other.availabilityId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.Availability[ availabilityId=" + availabilityId + " ]";
     }
     
 }

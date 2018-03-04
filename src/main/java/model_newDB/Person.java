@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Reprents the person table in the new database where each row represents a 
+ * user/applicant.
  *
  * @author Oscar
  */
@@ -78,13 +80,33 @@ public class Person implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personId")
     private List<Applications> applicationsList;
 
+    /**
+     * Creates a new person without setting any variable.
+     * 
+     */
     public Person() {
     }
 
+    /**
+     * Creates a new person and sets the id.
+     *
+     * @param personId
+     */
     public Person(Long personId) {
         this.personId = personId;
     }
 
+    /**
+     * Creates a new person and sets all the columns this entity represent.
+     *
+     * @param personId of the new user.
+     * @param name of the new user.
+     * @param surname of the new user.
+     * @param ssn of the new user.
+     * @param email of the new user.
+     * @param password of the new user.
+     * @param username of the new user.
+     */
     public Person(Long personId, String name, String surname, String ssn, String email, String password, String username) {
         this.personId = personId;
         this.name = name;
@@ -106,11 +128,11 @@ public class Person implements Serializable {
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
+    
     public String getSurname() {
         return surname;
     }
@@ -184,31 +206,6 @@ public class Person implements Serializable {
 
     public void setApplicationsList(List<Applications> applicationsList) {
         this.applicationsList = applicationsList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (personId != null ? personId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Person)) {
-            return false;
-        }
-        Person other = (Person) object;
-        if ((this.personId == null && other.personId != null) || (this.personId != null && !this.personId.equals(other.personId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.Person[ personId=" + personId + " ]";
     }
     
 }

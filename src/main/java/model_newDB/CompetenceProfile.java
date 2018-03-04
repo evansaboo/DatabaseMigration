@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Reprents the competence_profile table in the new database where each row
+ * represents a persons competence and years of experience.
  *
  * @author Oscar
  */
@@ -50,13 +52,28 @@ public class CompetenceProfile implements Serializable {
     @ManyToOne(optional = false)
     private Person personId;
 
+    /**
+     * Creates a new competence profile without setting any varaible.
+     *
+     */
     public CompetenceProfile() {
     }
 
+    /**
+     * Creates a new competence profile with a specific id.
+     *
+     * @param competenceProfileId the new id.
+     */
     public CompetenceProfile(Long competenceProfileId) {
         this.competenceProfileId = competenceProfileId;
     }
 
+    /**
+     * Creates a new competence profile with a specifc if and years of experience.
+     *
+     * @param competenceProfileId the new id.
+     * @param yearsOfExperience the years of experience bound to this profile.
+     */
     public CompetenceProfile(Long competenceProfileId, BigDecimal yearsOfExperience) {
         this.competenceProfileId = competenceProfileId;
         this.yearsOfExperience = yearsOfExperience;
@@ -92,31 +109,6 @@ public class CompetenceProfile implements Serializable {
 
     public void setPersonId(Person personId) {
         this.personId = personId;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (competenceProfileId != null ? competenceProfileId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CompetenceProfile)) {
-            return false;
-        }
-        CompetenceProfile other = (CompetenceProfile) object;
-        if ((this.competenceProfileId == null && other.competenceProfileId != null) || (this.competenceProfileId != null && !this.competenceProfileId.equals(other.competenceProfileId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "model_newDB.CompetenceProfile[ competenceProfileId=" + competenceProfileId + " ]";
     }
     
 }
