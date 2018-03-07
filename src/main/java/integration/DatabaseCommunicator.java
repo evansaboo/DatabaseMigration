@@ -32,10 +32,7 @@ class DatabaseCommunicator {
     }
     
     void storeListWithNewContent(EntityManager em, List<?> newContent) throws Exception {
-        String entityName = "";
-        try {
-            entityName = newContent.get(0).getClass().getSimpleName();
-        } catch(Exception ex) {}
+        String entityName = newContent.get(0).getClass().getSimpleName();
         
         try {
             newContent.forEach(content -> {

@@ -97,7 +97,9 @@ public class NewRecruitmentDAO {
             });
             
             return emQuery.getSingleResult();
-        } catch (Exception e) {
+        } catch(RuntimeException rex) {
+            throw rex;
+        } catch(Exception ex) {
             et.throwException(DBMsgConstants.UNABLE_TO_PERFORM_QUERY + ": " + fullQuery 
                     + " on the " + DBMsgConstants.NEW_DB);
         }
