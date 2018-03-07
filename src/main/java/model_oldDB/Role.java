@@ -6,17 +6,14 @@
 package model_oldDB;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Reprents the role table in the old database where each row represents a role
@@ -40,8 +37,6 @@ public class Role implements Serializable {
     private Long roleId;
     @Column(name = "NAME", length = 255)
     private String name;
-    @OneToMany(mappedBy = "roleId")
-    private List<Person> personList;
 
     /**
      * Creates a new role without setting any variable.
@@ -73,15 +68,6 @@ public class Role implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @XmlTransient
-    public List<Person> getPersonList() {
-        return personList;
-    }
-
-    public void setPersonList(List<Person> personList) {
-        this.personList = personList;
     }
     
 }

@@ -11,7 +11,7 @@ import model.DBMsgConstants;
 import model.ExceptionThrower;
 
 /**
- *
+ * 
  * @author Oscar
  */
 class DatabaseCommunicator {
@@ -54,7 +54,7 @@ class DatabaseCommunicator {
             em.close();
         } catch (Exception ex) {
             System.out.println("Error commiting last/closing em: " + ex.getMessage());
-            ex.printStackTrace();
+            //ex.printStackTrace();
             rollbackDb(em);
             et.throwException(DBMsgConstants.UNABLE_TO_COMMIT);
         }
@@ -66,7 +66,7 @@ class DatabaseCommunicator {
             em.close();
         } catch(Exception ex) {
             System.out.println("Error rolling back... : " + ex.getMessage());
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
     }
     

@@ -49,7 +49,7 @@ public class Converter {
      * Converts the old availabilities to new availabilites 
      *
      * @param availabilities list with the old availabilitites.
-     * @return List<Availability> list with the new availabilitites.
+     * @return list with the new availabilitites.
      */
     public List<Availability> availabilities(List<model_oldDB.Availability> availabilities) {
         return availabilities.stream().map(oldAvailability -> {
@@ -67,7 +67,7 @@ public class Converter {
      * Converts the old competenceProfiles to new competenceProfiles 
      *
      * @param profiles list with the old competenceProfiles.
-     * @return List<CompetenceProfile> list with the new competenceProfiles.
+     * @return list with the new competenceProfiles.
      */
     public List<CompetenceProfile> competenceProfiles(List<model_oldDB.CompetenceProfile> profiles) {
         return profiles.stream().map(oldProfile -> {
@@ -85,7 +85,7 @@ public class Converter {
      * Converts the old roles to new roles 
      *
      * @param roles list with the old roles.
-     * @return List<Role> list with the new roles.
+     * @return list with the new roles.
      */
     public List<Role> roles(List<model_oldDB.Role> roles) {
         return roles.stream().map((oldRole) -> {
@@ -107,7 +107,7 @@ public class Converter {
      * Converts the old persons to new persons.
      *
      * @param oldPersons list with the old persons.
-     * @return List<Person> list with the new persons.
+     * @return list with the new persons.
      */
     public List<Person> persons(List<model_oldDB.Person> oldPersons) {
         return oldPersons.stream().map(oldPerson -> { 
@@ -193,7 +193,7 @@ public class Converter {
      * be all data from the old database. 
      *
      * @param status the status each new application should get.
-     * @return List<Applications> the new applications to be stored.
+     * @return list with the new applications to be stored.
      */
     public List<Applications> createApplications(StatusName status) {
         Date registrationDate = new Date(System.currentTimeMillis());
@@ -213,7 +213,7 @@ public class Converter {
      * Creates the initial data that the new database needs to be able to migrate 
      * the old data successfully.
      *
-     * @return List<List<?>> list with lists containing the new data needed.
+     * @return list with lists containing the new data needed.
      */
     public List<List<?>> getIntialData() {
         List<List<?>> data = new ArrayList<>();

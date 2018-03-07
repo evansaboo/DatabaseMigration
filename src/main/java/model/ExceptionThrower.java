@@ -6,7 +6,8 @@
 package model;
 
 /**
- *
+ * Class with a method used to throw exceptions.
+ * 
  * @author Oscar
  */
 public class ExceptionThrower {

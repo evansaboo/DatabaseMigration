@@ -6,7 +6,6 @@
 package model_oldDB;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,10 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Reprents the person table in the old database where each row represents a 
@@ -60,10 +57,6 @@ public class Person implements Serializable {
     @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID")
     @ManyToOne
     private Role roleId;
-    @OneToMany(mappedBy = "personId")
-    private List<Availability> availabilityList;
-    @OneToMany(mappedBy = "personId")
-    private List<CompetenceProfile> competenceProfileList;
 
     /**
      * Creates a new person without setting any variable.
@@ -144,22 +137,5 @@ public class Person implements Serializable {
     public void setRoleId(Role roleId) {
         this.roleId = roleId;
     }
-
-    @XmlTransient
-    public List<Availability> getAvailabilityList() {
-        return availabilityList;
-    }
-
-    public void setAvailabilityList(List<Availability> availabilityList) {
-        this.availabilityList = availabilityList;
-    }
-
-    @XmlTransient
-    public List<CompetenceProfile> getCompetenceProfileList() {
-        return competenceProfileList;
-    }
-
-    public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileList) {
-        this.competenceProfileList = competenceProfileList;
-    }    
+    
 }

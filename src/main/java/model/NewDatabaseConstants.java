@@ -10,28 +10,28 @@ package model;
  *
  * @author Oscar
  */
-public class NewDatabaseConstants {
+class NewDatabaseConstants {
 
     /**
      * String value of the applicant role.
      */
-    public static final String ROLE_APPLICANT = "Applicant";
+    static final String ROLE_APPLICANT = "Applicant";
 
     /**
      *  String value of the recruiter role.
      */
-    public static final String ROLE_RECRUITER = "Recruiter";
+    static final String ROLE_RECRUITER = "Recruiter";
 
     /**
      *  String value when no data was present in the old database.
      */
-    public static final String DATA_NOT_PRESENT = "no data present at migration";
+    static final String DATA_NOT_PRESENT = "no data present at migration";
     
     /**
      *  Default values that gets entered in the new databse status_name table 
      * with their languages and differente statuses.
      */
-    public static final String[][] SUPPORTED_LANGUAGES_WITH_STATUS_NAMES = {
+    static final String[][] SUPPORTED_LANGUAGES_WITH_STATUS_NAMES = {
         {"sv", "Accepterad", "Nekad", "Väntar"},
         {"en", "Accepted", "Rejected", "Pending"}
     };

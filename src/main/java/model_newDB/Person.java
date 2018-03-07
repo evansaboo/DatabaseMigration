@@ -73,12 +73,6 @@ public class Person implements Serializable {
     @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID", nullable = false)
     @ManyToOne(optional = false)
     private Role roleId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personId")
-    private List<Availability> availabilityList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personId")
-    private List<CompetenceProfile> competenceProfileList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personId")
-    private List<Applications> applicationsList;
 
     /**
      * Creates a new person without setting any variable.
@@ -179,33 +173,6 @@ public class Person implements Serializable {
 
     public void setRoleId(Role roleId) {
         this.roleId = roleId;
-    }
-
-    @XmlTransient
-    public List<Availability> getAvailabilityList() {
-        return availabilityList;
-    }
-
-    public void setAvailabilityList(List<Availability> availabilityList) {
-        this.availabilityList = availabilityList;
-    }
-
-    @XmlTransient
-    public List<CompetenceProfile> getCompetenceProfileList() {
-        return competenceProfileList;
-    }
-
-    public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileList) {
-        this.competenceProfileList = competenceProfileList;
-    }
-
-    @XmlTransient
-    public List<Applications> getApplicationsList() {
-        return applicationsList;
-    }
-
-    public void setApplicationsList(List<Applications> applicationsList) {
-        this.applicationsList = applicationsList;
     }
     
 }

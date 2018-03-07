@@ -6,9 +6,7 @@
 package model_newDB;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Reprents the competence_name table in the new database where each row represents
@@ -56,8 +52,6 @@ public class CompetenceName implements Serializable {
     @JoinColumn(name = "SUPPORTED_LANGUAGE", referencedColumnName = "SUPPORTED_LANGUAGE_ID", nullable = false)
     @ManyToOne(optional = false)
     private SupportedLanguage supportedLanguage;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competenceId")
-    private List<CompetenceProfile> competenceProfileList;
 
     /**
      * Creates a new competence name without setting any varaible.
@@ -119,15 +113,6 @@ public class CompetenceName implements Serializable {
 
     public void setSupportedLanguage(SupportedLanguage supportedLanguage) {
         this.supportedLanguage = supportedLanguage;
-    }
-
-    @XmlTransient
-    public List<CompetenceProfile> getCompetenceProfileList() {
-        return competenceProfileList;
-    }
-
-    public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileList) {
-        this.competenceProfileList = competenceProfileList;
     }
     
 }

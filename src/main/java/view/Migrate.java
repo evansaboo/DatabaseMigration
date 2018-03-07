@@ -23,7 +23,7 @@ import model_oldDB.Competence;
  * @author Oscar
  */
 public class Migrate {
-    private static final Scanner stdIn = new Scanner(System.in).useDelimiter("\\n");
+    private static final Scanner STD_IN = new Scanner(System.in).useDelimiter("\\n");
     
     /**
      * Main method that runs when program is run.
@@ -48,7 +48,7 @@ public class Migrate {
                 final long compId = oldCompetences.get(i).getCompetenceId();
 
                 languages.forEach(lang -> {
-                    boolean valid = false;
+                    boolean valid;
                     String translation = "";
 
                     do {
@@ -105,7 +105,7 @@ public class Migrate {
         
         while(translation.isEmpty()) {
             System.out.print("Translate <" + original + "> to the language <" + language + ">: ");
-            translation = stdIn.next();
+            translation = STD_IN.next();
         }
         
         return translation;
@@ -117,7 +117,7 @@ public class Migrate {
         do {
             System.out.print("Are you sure that <" + original + "> should be stored as <" 
                     + translation + "> in the language <" + language + ">? (y/n): ");
-            decision = stdIn.next();
+            decision = STD_IN.next();
         } while(!decision.equals("n") && !decision.equals("y"));
         
         

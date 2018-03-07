@@ -45,7 +45,7 @@ public class Controller {
     /**
      * Retreives the supported languages from the new database and returns them.
      *
-     * @return List<model_newDB.SupportedLanguage> list with supported languages.
+     * @return list with supported languages.
      * @throws Exception if something goes wrong.
      */
     public List<model_newDB.SupportedLanguage> getLanguages() throws Exception {
@@ -55,7 +55,7 @@ public class Controller {
     /**
      * Retreives the competences from the old database and returns them.
      *
-     * @return List<model_oldDB.Competence> list with the old competences.
+     * @return list with the old competences.
      * @throws Exception if something goes wrong.
      */
     public List<model_oldDB.Competence> getOldCompetences() throws Exception {
